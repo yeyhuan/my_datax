@@ -19,7 +19,7 @@ DataX本身作为数据同步框架，将不同数据源的同步抽象为从源
 
 # DataX详细介绍
 
-##### 请参考：[DataX-Introduction](https://github.com/alibaba/DataX/blob/master/introduction.md)
+##### 请参考：[DataX-Introduction](introduction.md)
 
 
 
@@ -28,7 +28,7 @@ DataX本身作为数据同步框架，将不同数据源的同步抽象为从源
 ##### Download [DataX下载地址](https://datax-opensource.oss-cn-hangzhou.aliyuncs.com/202209/datax.tar.gz)
 
 
-##### 请点击：[Quick Start](https://github.com/alibaba/DataX/blob/master/userGuid.md)
+##### 请点击：[Quick Start](userGuid.md)
 
 
 
@@ -38,8 +38,8 @@ DataX目前已经有了比较全面的插件体系，主流的RDBMS数据库、N
 
 | 类型           | 数据源        | Reader(读) | Writer(写) |文档|
 | ------------ | ---------- | :-------: | :-------: |:-------: |
-| RDBMS 关系型数据库 | MySQL      |     √     |     √     |[读](https://github.com/alibaba/DataX/blob/master/mysqlreader/doc/mysqlreader.md) 、[写](https://github.com/alibaba/DataX/blob/master/mysqlwriter/doc/mysqlwriter.md)|
-|              | Oracle     |     √     |     √     |[读](https://github.com/alibaba/DataX/blob/master/oraclereader/doc/oraclereader.md) 、[写](https://github.com/alibaba/DataX/blob/master/oraclewriter/doc/oraclewriter.md)|
+| RDBMS 关系型数据库 | MySQL      |     √     |     √     |[读](mysqlreader/doc/mysqlreader.md) 、[写](https://github.com/alibaba/DataX/blob/master/mysqlwriter/doc/mysqlwriter.md)|
+|              | Oracle     |     √     |     √     |[读](oraclereader/doc/oraclereader.md) 、[写](https://github.com/alibaba/DataX/blob/master/oraclewriter/doc/oraclewriter.md)|
 |              | OceanBase  |     √     |     √     |[读](https://open.oceanbase.com/docs/community/oceanbase-database/V3.1.0/use-datax-to-full-migration-data-to-oceanbase) 、[写](https://open.oceanbase.com/docs/community/oceanbase-database/V3.1.0/use-datax-to-full-migration-data-to-oceanbase)|
 |              | SQLServer  |     √     |     √     |[读](https://github.com/alibaba/DataX/blob/master/sqlserverreader/doc/sqlserverreader.md) 、[写](https://github.com/alibaba/DataX/blob/master/sqlserverwriter/doc/sqlserverwriter.md)|
 |              | PostgreSQL |     √     |     √     |[读](https://github.com/alibaba/DataX/blob/master/postgresqlreader/doc/postgresqlreader.md) 、[写](https://github.com/alibaba/DataX/blob/master/postgresqlwriter/doc/postgresqlwriter.md)|
