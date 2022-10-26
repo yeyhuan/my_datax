@@ -2,7 +2,8 @@
 
 
 ---
-
+<br>注意：</br>
+使用支持update语义的PostgresqlWriter，解压 [postgresqlwriter包](postgresqlwriter.zip) 包，替换datax下 plugin/writer/postgresqlwriter 整个目录。
 
 ## 1 快速介绍
 
