@@ -133,6 +133,7 @@ public final class WriterUtil {
         } else {
 
             if (dataBaseType == DataBaseType.PostgreSQL) {
+                System.out.println("===我是pg===");
                 writeDataSqlTemplate = new StringBuilder().append("INSERT INTO %s (")
                         .append(StringUtils.join(columnHolders, ","))
                         .append(") VALUES(").append(StringUtils.join(valueHolders, ","))

@@ -29,6 +29,7 @@ public class Adb4pgUtil {
 
     private static final Logger LOG = LoggerFactory.getLogger(Adb4pgUtil.class);
     private static final DataBaseType DATABASE_TYPE = DataBaseType.PostgreSQL;
+
     public static void checkConfig(Configuration originalConfig) {
         try {
 
@@ -74,7 +75,7 @@ public class Adb4pgUtil {
     private static Map<String, List<String>> splitBySchemaName(List<String> tables) {
         HashMap<String, List<String>> res = new HashMap<String, List<String>>(16);
 
-        for (String schemaNameTableName: tables) {
+        for (String schemaNameTableName : tables) {
             String[] s = schemaNameTableName.split("\\.");
             if (!res.containsKey(s[0])) {
                 res.put(s[0], new ArrayList<String>());
@@ -98,10 +99,11 @@ public class Adb4pgUtil {
         String host = configuration.getString(com.alibaba.datax.plugin.writer.adbpgwriter.util.Key.HOST);
         String port = configuration.getString(com.alibaba.datax.plugin.writer.adbpgwriter.util.Key.PORT);
         String databseName = configuration.getString(com.alibaba.datax.plugin.writer.adbpgwriter.util.Key.DATABASE);
-        String jdbcUrl = "jdbc:postgresql://" + host + ":" + port + "/" + databseName;
+        String jdbcUrl = "jdbc:postgresql://" + host + ":" + port + "/" + databseName + "?stringtype=unspecified";
         return jdbcUrl;
 
     }
+
     public static void prepare(Configuration originalConfig) {
         List<String> preSqls = originalConfig.getList(Key.PRE_SQL,
                 String.class);
@@ -136,7 +138,7 @@ public class Adb4pgUtil {
 
         configuration.remove(Key.POST_SQL);
 
-        Connection conn =  getAdbpgConnect(configuration);
+        Connection conn = getAdbpgConnect(configuration);
 
         WriterUtil.executeSqls(conn, renderedPostSqls, generateJdbcUrl(configuration), DATABASE_TYPE);
         DBUtil.closeDBResources(null, null, conn);
