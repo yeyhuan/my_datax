@@ -12,4 +12,8 @@ public final class Key {
     public static final String HAVE_KERBEROS = "haveKerberos";
     public static final String KERBEROS_KEYTAB_FILE_PATH = "kerberosKeytabFilePath";
     public static final String KERBEROS_PRINCIPAL = "kerberosPrincipal";
+    /**
+     * 是否跳过空目录异常
+     */
+    public static final String  SKIP_EMPTY_DIR="skipEmptyDir";
 }

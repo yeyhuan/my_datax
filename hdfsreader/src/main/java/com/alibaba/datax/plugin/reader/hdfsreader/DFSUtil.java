@@ -156,6 +156,12 @@ public class DFSUtil {
         // 获取要读取的文件的根目录
         Path listFiles = new Path(path);
 
+        if(!hdfs.exists(listFiles)){
+            String message = String.format("[%s] 路径目录不存在!",path);
+            LOG.warn(message);
+            System.exit(0);
+        }
+
         // If the network disconnected, this method will retry 45 times
         // each time the retry interval for 20 seconds
         // 获取要读取的文件的根目录的所有二级子文件目录
