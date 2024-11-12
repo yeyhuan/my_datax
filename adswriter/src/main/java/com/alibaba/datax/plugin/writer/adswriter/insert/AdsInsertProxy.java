@@ -607,13 +607,20 @@ public class AdsInsertProxy implements AdsProxy {
 
                 break;
             default:
-                Pair<Integer, String> columnMetaPair = this.userConfigColumnsMetaData.get(columnName);
-                throw DataXException
-                        .asDataXException(
-                                DBUtilErrorCode.UNSUPPORTED_TYPE,
-                                String.format(
-                                        "您的配置文件中的列配置信息有误. 因为DataX 不支持数据库写入这种字段类型. 字段名:[%s], 字段类型:[%s], 字段Java类型:[%s]. 请修改表中该字段的类型或者不同步该字段.",
-                                        columnName, columnMetaPair.getRight(), columnMetaPair.getLeft()));
+                try {
+                    String strValue2 = column.asString();
+                    statement.setString(preparedPatamIndex + 1, strValue2);
+                } catch (Exception e) {
+                    Pair<Integer, String> columnMetaPair = this.userConfigColumnsMetaData.get(columnName);
+                    throw DataXException
+                            .asDataXException(
+                                    DBUtilErrorCode.UNSUPPORTED_TYPE,
+                                    String.format(
+                                            "您的配置文件中的列配置信息有误.尝试了string类型写入.但是失败了.. 因为DataX 不支持数据库写入这种字段类型. 字段名:[%s], 字段类型:[%s], 字段Java类型:[%s]. 请修改表中该字段的类型或者不同步该字段.",
+                                            columnName, columnMetaPair.getRight(), columnMetaPair.getLeft()));
+                }
+
+
         }
     }
 

@@ -38,7 +38,7 @@ public class HologresJdbcWriter extends Writer {
 
 		@Override
 		public void destroy() {
-			this.baseWriterMaster.destroy(this.originalConfig);
+			this.baseWriterMaster.destroy();
 		}
 
 	}

@@ -532,17 +532,23 @@ public class CommonRdbmsWriter {
                     }
                     break;
                 default:
-                    throw DataXException
-                            .asDataXException(
-                                    DBUtilErrorCode.UNSUPPORTED_TYPE,
-                                    String.format(
-                                            "您的配置文件中的列配置信息有误. 因为DataX 不支持数据库写入这种字段类型. 字段名:[%s], 字段类型:[%d], 字段Java类型:[%s]. 请修改表中该字段的类型或者不同步该字段.",
-                                            this.resultSetMetaData.getLeft()
-                                                    .get(columnIndex),
-                                            this.resultSetMetaData.getMiddle()
-                                                    .get(columnIndex),
-                                            this.resultSetMetaData.getRight()
-                                                    .get(columnIndex)));
+                    try {
+                        preparedStatement.setString(columnIndex + 1, column
+                                .asString());
+                    } catch (Exception e) {
+                        throw DataXException
+                                .asDataXException(
+                                        DBUtilErrorCode.UNSUPPORTED_TYPE,
+                                        String.format(
+                                                "您的配置文件中的列配置信息有误. 尝试了string类型写入.但是失败了.因为rdb DataX 不支持数据库写入这种字段类型. 字段名:[%s], 字段类型:[%d], 字段Java类型:[%s]. 请修改表中该字段的类型或者不同步该字段.",
+                                                this.resultSetMetaData.getLeft()
+                                                        .get(columnIndex),
+                                                this.resultSetMetaData.getMiddle()
+                                                        .get(columnIndex),
+                                                this.resultSetMetaData.getRight()
+                                                        .get(columnIndex)));
+                    }
+
             }
             return preparedStatement;
         }
